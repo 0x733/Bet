@@ -1,0 +1,16 @@
+name: Günlük Bahis Tahminleri
+
+on:
+  schedule:
+    - cron:  '0 12 * * *'
+
+jobs:
+  bahis_tahminleri:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Kütüphaneleri Yükle
+      run: |
+        pip install requests beautifulsoup4
+    - name: Betiği Çalıştır
+      run: |
+        python main.py
