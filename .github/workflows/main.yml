@@ -2,15 +2,22 @@ name: Günlük Bahis Tahminleri
 
 on:
   schedule:
-    - cron:  '0 12 * * *'
+    - cron: '0 12 * * *'
 
 jobs:
   bahis_tahminleri:
     runs-on: ubuntu-latest
+
     steps:
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
     - name: Kütüphaneleri Yükle
       run: |
         pip install requests beautifulsoup4
+
     - name: Betiği Çalıştır
       run: |
         python main.py
